@@ -12,6 +12,8 @@ import {
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { baseurl } from "../firebase/baseurl";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -30,10 +32,25 @@ const Signup = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Signup submitted:", formData);
-    // Handle signup logic here
+    try {
+      const existingUsers = await axios.get(baseurl);
+
+      const response = await axios.post(baseurl, formData);
+      if (response.status == 200) {
+        console.log("Signup success");
+        setFormData({
+          name: "",
+          email: "",
+          gender: "",
+          password: "",
+          age: "",
+        });
+      }
+    } catch (error) {
+      console.log("error during signup");
+    }
   };
 
   return (

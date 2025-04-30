@@ -1,0 +1,247 @@
+/* Blog Page Styles */
+.blog-page {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Hero Section */
+  .blog-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), #00000099),
+url('https://wallpaperaccess.com/full/3275630.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 5rem 0;
+    text-align: center;
+    min-height: 70vh;
+  }
+  
+  
+  .search-container .input-group {
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .search-container .form-control {
+    padding: 1rem;
+  }
+  
+  .search-container .btn {
+    padding: 0 1.5rem;
+  }
+  
+  /* Featured Posts */
+  .featured-post-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    height: 100%;
+  }
+  
+  .featured-post-card:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  .post-image {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .post-content {
+    padding: 1.5rem;
+  }
+  
+  .category-badge {
+    display: inline-block;
+    background: #3498db;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .post-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin: 1rem 0;
+  }
+  
+  .post-meta svg {
+    margin-right: 0.3rem;
+  }
+  
+  .read-more {
+    display: inline-flex;
+    align-items: center;
+    color: #3498db;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .read-more:hover {
+    color: #2c3e50;
+  }
+  
+  .read-more svg {
+    margin-left: 0.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  .read-more:hover svg {
+    transform: translateX(3px);
+  }
+  
+  /* Category Filters */
+  .category-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Blog Grid */
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .blog-post-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+  
+  .blog-post-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .post-thumbnail {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .post-body {
+    padding: 1.5rem;
+  }
+  
+  .post-category {
+    display: inline-block;
+    color: #3498db;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .post-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .post-excerpt {
+    color: #6c757d;
+    margin-bottom: 1rem;
+  }
+  
+  .post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+  }
+  
+  /* Sidebar */
+  .blog-sidebar {
+    position: sticky;
+    top: 20px;
+  }
+  
+  .sidebar-widget {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1.5rem;
+  }
+  
+  .sidebar-widget h4 {
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #f1f1f1;
+  }
+  
+  .tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    background: #f8f9fa;
+    padding: 0.4rem 0.8rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    color: #495057;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .tag:hover {
+    background: #3498db;
+    color: white;
+  }
+  
+  .tag svg {
+    margin-right: 0.3rem;
+    font-size: 0.7rem;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 992px) {
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .post-thumbnail {
+      height: 250px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .blog-hero {
+      padding: 3rem 0;
+    }
+    
+    .featured-post-card {
+      margin-bottom: 1.5rem;
+    }
+    
+    .category-filters {
+      justify-content: center;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .post-meta {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .post-footer {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+  }

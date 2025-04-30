@@ -4,11 +4,16 @@
   }
   
   /* Hero Section */
+  
   .support-hero {
-    background: linear-gradient(135deg, #3498db, #2ecc71);
+    background: linear-gradient(rgba(0, 0, 0, 0.6), #00000099),
+    url('https://www.helping-minds.org/wp-content/uploads/2020/03/medical.jpg');
+    background-size: cover;
+    background-position: center;
     color: white;
     padding: 5rem 0;
     text-align: center;
+    min-height: 70vh;
   }
   
   .search-container {

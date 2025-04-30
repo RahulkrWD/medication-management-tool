@@ -1,0 +1,208 @@
+/* Features Page Styles */
+.features-page {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Hero Section */
+  .features-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), #00000099),
+    url('https://wallpaperaccess.com/full/624111.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 5rem 0;
+    text-align: center;
+    min-height: 70vh;
+  }
+  
+  /* Category Tabs */
+  .category-tabs {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .category-btn {
+    background: transparent;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    margin: 0 0.5rem;
+    font-weight: 500;
+    color: #495057;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .category-btn.active {
+    color: #3498db;
+    font-weight: 600;
+  }
+  
+  .category-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 3px;
+    background: #3498db;
+    border-radius: 3px;
+  }
+  
+  .category-btn:hover:not(.active) {
+    color: #212529;
+  }
+  
+  /* Highlight Features */
+  .highlight-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    height: 100%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .highlight-card:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  .feature-icon {
+    font-size: 2.5rem;
+    color: #3498db;
+    margin-bottom: 1.5rem;
+  }
+  
+  .highlight-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+  }
+  
+  .highlight-card p {
+    color: #6c757d;
+    margin-bottom: 1.5rem;
+  }
+  
+  .learn-more {
+    display: inline-flex;
+    align-items: center;
+    color: #3498db;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .learn-more span {
+    margin-left: 0.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  .learn-more:hover {
+    color: #2c3e50;
+  }
+  
+  .learn-more:hover span {
+    transform: translateX(3px);
+  }
+  
+  /* All Features Grid */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .feature-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+  
+  .feature-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-icon {
+    font-size: 2rem;
+    color: #3498db;
+    margin: 0 auto 1rem;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: rgba(52, 152, 219, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .feature-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: #2c3e50;
+  }
+  
+  .feature-card p {
+    color: #6c757d;
+    font-size: 0.95rem;
+  }
+  
+  /* CTA Section */
+  .features-cta {
+    background: linear-gradient(135deg, #2c3e50, #4a6491);
+    padding: 4rem 0;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 992px) {
+    .features-grid {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .features-hero {
+      padding: 3rem 0;
+    }
+    
+    .category-btn {
+      padding: 0.5rem 1rem;
+      margin: 0.25rem;
+      font-size: 0.9rem;
+    }
+    
+    .highlight-card {
+      padding: 1.5rem;
+    }
+    
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .highlight-card h3 {
+      font-size: 1.3rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .features-cta .d-flex {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .features-cta .btn {
+      width: 100%;
+    }
+  }
