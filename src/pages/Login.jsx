@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/Login.css";
 import {
   FaUser,
@@ -8,17 +8,47 @@ import {
   FaArrowRight,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { clearAuthState, login } from "../redux/AuthSlice";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { loading, error, isAuthenticated, message, userId } = useSelector(
+    (state) => state.auth
+  );
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    if (isAuthenticated && userId) {
+      localStorage.setItem("isAuth", JSON.stringify(isAuthenticated));
+      localStorage.setItem("userId", userId);
+      navigate("/dashboard");
+    }
+  }, [isAuthenticated, userId, navigate]);
+  const [rememberMe, setRememberMe] = useState(false);
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle login logic here
-    console.log("Login submitted:", { email, password, rememberMe });
+    dispatch(clearAuthState());
+
+    try {
+      const result = await dispatch(login(formData)).unwrap();
+    } catch (error) {
+      console.log("Login Failed", error);
+    }
   };
 
   return (
@@ -64,10 +94,11 @@ const Login = () => {
                     <input
                       type="email"
                       id="email"
+                      name="email"
                       className="form-control"
                       placeholder="Enter your email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      value={formData.email}
+                      onChange={handleChange}
                       required
                     />
                   </div>
@@ -88,10 +119,11 @@ const Login = () => {
                     <input
                       type="password"
                       id="password"
+                      name="password"
                       className="form-control"
                       placeholder="Enter your password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
+                      value={formData.password}
+                      onChange={handleChange}
                       required
                     />
                   </div>
@@ -120,9 +152,22 @@ const Login = () => {
                   className="btn btn-primary w-100 login-btn"
                   whileTap={{ scale: 0.98 }}
                 >
-                  <span>Login</span>
+                  <span>{loading ? "Logging in..." : "Login"}</span>
                   <FaArrowRight className="ms-2" />
                 </motion.button>
+
+                <motion.div whileTap={{ scale: 0.98 }}>
+                  {error && (
+                    <div className="error-message text-center mt-3 text-danger">
+                      {error}
+                    </div>
+                  )}
+                  {message && (
+                    <div className="text-center mt-3 text-danger">
+                      {message}
+                    </div>
+                  )}
+                </motion.div>
 
                 {/* Divider */}
                 <div className="divider my-4">

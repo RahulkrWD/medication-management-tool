@@ -9,6 +9,7 @@ import Story from "./pages/Story";
 import Blog from "./pages/Blog";
 import Features from "./pages/Features";
 import Signup from "./pages/Signup";
+import Dashboard from "./pages/Dashboard";
 function App() {
   return (
     <Routes>
@@ -20,6 +21,7 @@ function App() {
       <Route path="/blog" element={<Blog />} />
       <Route path="/features" element={<Features />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/dashboard" element={<Dashboard />} />
     </Routes>
   );
 }

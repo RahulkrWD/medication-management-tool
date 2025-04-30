@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import React, { useState, useEffect } from "react";
 import "../styles/Signup.css";
 import {
   FaUser,
@@ -11,11 +10,14 @@ import {
   FaSignInAlt,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import { baseurl } from "../firebase/baseurl";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { signup, clearAuthState } from "../redux/AuthSlice";
 
 const Signup = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { loading, error, message } = useSelector((state) => state.auth);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -23,6 +25,12 @@ const Signup = () => {
     password: "",
     age: "",
   });
+
+  useEffect(() => {
+    return () => {
+      dispatch(clearAuthState());
+    };
+  }, [dispatch]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -35,21 +43,15 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const existingUsers = await axios.get(baseurl);
+      const result = await dispatch(signup(formData)).unwrap();
 
-      const response = await axios.post(baseurl, formData);
-      if (response.status == 200) {
-        console.log("Signup success");
-        setFormData({
-          name: "",
-          email: "",
-          gender: "",
-          password: "",
-          age: "",
-        });
+      if (result) {
+        setTimeout(() => {
+          navigate("/login");
+        }, 1500);
       }
     } catch (error) {
-      console.log("error during signup");
+      console.error("Signup failed:", error);
     }
   };
 
@@ -225,13 +227,30 @@ const Signup = () => {
 
                 {/* Signup Button */}
                 <motion.button
+                  disabled={loading}
                   type="submit"
                   className="btn btn-primary w-100 signup-btn"
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <span>Create Account</span>
+                  <span>{loading ? "submitting...." : "Create Account"}</span>
                 </motion.button>
+
+                <motion.div
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  {error && (
+                    <div className="error-message text-center m-3 text-danger">
+                      {error}
+                    </div>
+                  )}
+                  {message && (
+                    <div className="success-message text-center mt-3 text-danger">
+                      {message}
+                    </div>
+                  )}
+                </motion.div>
 
                 {/* Divider */}
                 <div className="divider my-4">
