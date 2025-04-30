@@ -156,53 +156,6 @@ const Blog = () => {
           </div>
         </section>
 
-        {/* Featured Posts */}
-        {featuredPosts.length > 0 && (
-          <section className="featured-posts py-5 bg-light">
-            <div className="container">
-              <h2 className="text-center fw-bold mb-5">Featured Articles</h2>
-              <div className="row g-4">
-                {featuredPosts.map((post) => (
-                  <div key={post.id} className="col-md-6">
-                    <motion.div
-                      whileHover={{ y: -10 }}
-                      className="featured-post-card"
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      <div
-                        className="post-image"
-                        style={{ backgroundImage: `url(${post.image})` }}
-                      ></div>
-                      <div className="post-content">
-                        <span className="category-badge">{post.category}</span>
-                        <h3>{post.title}</h3>
-                        <p>{post.excerpt}</p>
-                        <div className="post-meta">
-                          <span>
-                            <FaCalendarAlt /> {post.date}
-                          </span>
-                          <span>
-                            <FaUser /> {post.author}
-                          </span>
-                          <span>
-                            <FaComment /> {post.comments} comments
-                          </span>
-                        </div>
-                        <a href={`/blog/${post.id}`} className="read-more">
-                          Read More <FaArrowRight />
-                        </a>
-                      </div>
-                    </motion.div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
-
         {/* Main Blog Content */}
         <section className="blog-main py-5">
           <div className="container">
@@ -348,6 +301,53 @@ const Blog = () => {
             </div>
           </div>
         </section>
+
+        {/* Featured Posts */}
+        {featuredPosts.length > 0 && (
+          <section className="featured-posts py-5 bg-light">
+            <div className="container">
+              <h2 className="text-center fw-bold mb-5">Featured Articles</h2>
+              <div className="row g-4">
+                {featuredPosts.map((post) => (
+                  <div key={post.id} className="col-md-6">
+                    <motion.div
+                      whileHover={{ y: -10 }}
+                      className="featured-post-card"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <div
+                        className="post-image"
+                        style={{ backgroundImage: `url(${post.image})` }}
+                      ></div>
+                      <div className="post-content">
+                        <span className="category-badge">{post.category}</span>
+                        <h3>{post.title}</h3>
+                        <p>{post.excerpt}</p>
+                        <div className="post-meta">
+                          <span>
+                            <FaCalendarAlt /> {post.date}
+                          </span>
+                          <span>
+                            <FaUser /> {post.author}
+                          </span>
+                          <span>
+                            <FaComment /> {post.comments} comments
+                          </span>
+                        </div>
+                        <a href={`/blog/${post.id}`} className="read-more">
+                          Read More <FaArrowRight />
+                        </a>
+                      </div>
+                    </motion.div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
       </div>
     </Layout>
   );

@@ -96,6 +96,8 @@ const Features = () => {
       ? features
       : features.filter((feature) => feature.category === activeTab);
 
+  const currentCategoryName =
+    categories.find((cat) => cat.id === activeTab)?.name || "Features";
   return (
     <Layout>
       <div className="features-page">
@@ -142,6 +144,34 @@ const Features = () => {
           </div>
         </section>
 
+        {/* All Features Grid */}
+        <section className="all-features py-5 bg-light">
+          <div className="container">
+            {/* <h2 className="text-center fw-bold mb-5">
+              {activeTab === "all" ? "All Features" : ""}
+            </h2> */}
+            <h2 className="text-center fw-bold mb-5">{currentCategoryName}</h2>
+
+            <div className="features-grid">
+              {filteredFeatures.map((feature) => (
+                <motion.div
+                  key={feature.id}
+                  className="feature-card"
+                  whileHover={{ scale: 1.03 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="card-icon">{feature.icon}</div>
+                  <h3>{feature.title}</h3>
+                  <p>{feature.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Highlighted Features */}
         <section className="highlight-features py-5">
           <div className="container">
@@ -168,30 +198,6 @@ const Features = () => {
                     </motion.div>
                   </div>
                 ))}
-            </div>
-          </div>
-        </section>
-
-        {/* All Features Grid */}
-        <section className="all-features py-5 bg-light">
-          <div className="container">
-            <h2 className="text-center fw-bold mb-5">All Features</h2>
-            <div className="features-grid">
-              {filteredFeatures.map((feature) => (
-                <motion.div
-                  key={feature.id}
-                  className="feature-card"
-                  whileHover={{ scale: 1.03 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="card-icon">{feature.icon}</div>
-                  <h3>{feature.title}</h3>
-                  <p>{feature.description}</p>
-                </motion.div>
-              ))}
             </div>
           </div>
         </section>
