@@ -1,0 +1,8 @@
+.page-not-found {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  }
+  
+  .page-not-found .lead {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+  }

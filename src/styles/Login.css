@@ -1,0 +1,137 @@
+/* Login.css */
+.login-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4f1fe 100%);
+    padding: 2rem 0;
+  }
+  
+  .login-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .app-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    background: linear-gradient(to right, #3498db, #2ecc71);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+  }
+  
+  .app-tagline {
+    color: #7f8c8d;
+    font-size: 1.1rem;
+  }
+  
+  .login-container {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .login-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+  
+  .login-subtitle {
+    color: #7f8c8d;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .form-label {
+    font-weight: 500;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+  }
+  
+  .input-group-text {
+    background-color: #f8f9fa;
+    color: #3498db;
+  }
+  
+  .forgot-password {
+    color: #3498db;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .forgot-password:hover {
+    color: #2980b9;
+    text-decoration: underline;
+  }
+  
+  .login-btn {
+    padding: 0.7rem;
+    border-radius: 50px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    background: linear-gradient(to right, #3498db, #2ecc71);
+    border: none;
+  }
+  
+  .login-btn:hover {
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+  }
+  
+  .divider {
+    position: relative;
+    text-align: center;
+  }
+  
+  .divider::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #ecf0f1;
+    z-index: 1;
+  }
+  
+  .divider span {
+    position: relative;
+    display: inline-block;
+    padding: 0 1rem;
+    background-color: white;
+    color: #7f8c8d;
+    z-index: 2;
+  }
+  
+  .nav-link {
+    display: flex;
+    align-items: center;
+    color: #7f8c8d !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: #3498db !important;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .login-container {
+      padding: 1.5rem;
+    }
+    
+    .app-title {
+      font-size: 2rem;
+    }
+    
+    .login-title {
+      font-size: 1.5rem;
+    }
+  }

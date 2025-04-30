@@ -1,0 +1,96 @@
+/* Header.css */
+.story-header {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9f5ff 100%);
+    padding: 4rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .story-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+    background-size: cover;
+    opacity: 0.1;
+  }
+  
+  .download-btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .download-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .badges-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  }
+  
+  .badge-item {
+    text-align: center;
+    padding: 1.5rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+  }
+  
+  .badge-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  .badge-item h5 {
+    margin-bottom: 0;
+    font-size: 1rem;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 992px) {
+    .story-header::before {
+      width: 100%;
+      height: 30%;
+      top: auto;
+      bottom: 0;
+    }
+    
+    .badges-container {
+      margin-top: 2rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .badge-item {
+      padding: 1rem;
+    }
+    
+    .badge-item h5 {
+      font-size: 0.9rem;
+    }
+    
+    .download-btn {
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .icons-apple {
+    margin: 10px 10px 10px 0;
+  }
