@@ -109,14 +109,14 @@ const Footer = () => {
             <div className="footer-section">
               <h5 className="footer-heading">Offices</h5>
               <div className="office-info">
-                <h6>United States</h6>
-                <p>Boston, MA</p>
-                <p>{888} 288-5288</p>
+                <h6>India</h6>
+                <p>Banglore, KA</p>
+                <p>{888} 888-8888</p>
 
-                <h6 className="mt-3">Israel</h6>
-                <p>Derech Haklamo'ut 41</p>
-                <p>Haifa, Israel 3303321</p>
-                <a href="mailto:support@medisafe.com">support@medisafe.com</a>
+                <h6 className="mt-3">India</h6>
+                <p>West Bengal, Kolkata</p>
+                <p>Kolkata, salt lake 700102</p>
+                <a href="mailto:support@medisafe.com">support@support.com</a>
               </div>
             </div>
           </div>

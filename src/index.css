@@ -1,28 +1,24 @@
-::-webkit-scrollbar {
+body::-webkit-scrollbar {
     width: 10px;
     height: 10px;
   }
   
-  ::-webkit-scrollbar-track {
+  body::-webkit-scrollbar-track {
     background: #f1f1f1; 
     border-radius: 10px;
   }
   
-  ::-webkit-scrollbar-thumb {
+  body::-webkit-scrollbar-thumb {
     background: #4CAF50; 
     border-radius: 10px;
     border: 2px solid #f1f1f1; 
   }
   
-  ::-webkit-scrollbar-thumb:hover {
+  body::-webkit-scrollbar-thumb:hover {
     background: #45a049; 
   }
   
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: #4CAF50 #f1f1f1;
-  }
-  
+
   html {
     scroll-behavior: smooth;
   }
