@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import DashboardLayout from "../components/dashboard/DashboardLayout";
 
-function Dashboard() {
+function Medications() {
   const navigate = useNavigate();
   const { isAuthenticated } = useSelector((state) => state.auth);
 
@@ -15,9 +15,9 @@ function Dashboard() {
 
   return (
     <DashboardLayout>
-      <h1>Welcome to Your Dashboard</h1>
+      <h1>Welcome to Your Medications</h1>
     </DashboardLayout>
   );
 }
 
-export default Dashboard;
+export default Medications;

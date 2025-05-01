@@ -1,0 +1,145 @@
+/* Settings Page Styles */
+.settings-page {
+  padding: 2rem 0;
+}
+
+.page-title {
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+}
+
+/* Navigation Card */
+.settings-nav-card {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.settings-nav-card .list-group-item {
+  border: none;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.settings-nav-card .list-group-item:hover {
+  background-color: #f8f9fa;
+}
+
+.settings-nav-card .list-group-item.active {
+  background-color: #4a6491;
+  border-color: #4a6491;
+}
+
+/* Content Card */
+.settings-content-card {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Settings Grid Layout */
+.settings-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.setting-item {
+  display: flex;
+  align-items: center;
+  padding: 1.25rem;
+  border-radius: 10px;
+  background-color: #f8f9fa;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.setting-item:hover {
+  background-color: #e9ecef;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.setting-item.active {
+  background-color: #e7f1ff;
+  border-left: 4px solid #4a6491;
+}
+
+.setting-icon {
+  font-size: 1.25rem;
+  color: #4a6491;
+}
+
+/* Notification Types Grid */
+.notification-types-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+}
+
+/* Theme Colors Grid */
+.theme-colors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.theme-color {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.color-preview {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+}
+
+.theme-color.primary .color-preview {
+  background-color: #4a6491;
+}
+
+.theme-color.blue .color-preview {
+  background-color: #0d6efd;
+}
+
+.theme-color.green .color-preview {
+  background-color: #198754;
+}
+
+.theme-color.purple .color-preview {
+  background-color: #6f42c1;
+}
+
+.theme-color.orange .color-preview {
+  background-color: #fd7e14;
+}
+
+.color-name {
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .settings-nav-card {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .settings-grid, .notification-types-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .theme-colors-grid {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  }
+}

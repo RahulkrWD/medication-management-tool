@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const baseurl =
-  "https://users-aea26-default-rtdb.asia-southeast1.firebasedatabase.app/users.json";
+  "https://users-aea26-default-rtdb.asia-southeast1.firebasedatabase.app/users";
 
 // create async thunks
 export const signup = createAsyncThunk(
@@ -10,7 +10,7 @@ export const signup = createAsyncThunk(
   async (formData, { rejectWithValue }) => {
     try {
       // Fetch existing users
-      const response = await axios.get(baseurl);
+      const response = await axios.get(`${baseurl}.json`);
       const users = response.data ? Object.values(response.data) : [];
       // check if user already exists
       const userExists = users.some((user) => user.email === formData.email);
@@ -19,7 +19,7 @@ export const signup = createAsyncThunk(
       }
 
       // post new user
-      const signupResponse = await axios.post(baseurl, formData);
+      const signupResponse = await axios.post(`${baseurl}.json`, formData);
       if (signupResponse.status == 200) {
         return "Account created successfully!";
       }
@@ -34,7 +34,7 @@ export const login = createAsyncThunk(
   "login",
   async (formData, { rejectWithValue }) => {
     try {
-      const response = await axios.get(baseurl);
+      const response = await axios.get(`${baseurl}.json`);
       if (response.status == 200) {
         const user = response.data
           ? Object.entries(response.data).map(([id, data]) => ({ id, ...data }))
@@ -54,6 +54,13 @@ export const login = createAsyncThunk(
   }
 );
 
+// user profile
+export const profile = createAsyncThunk("profile", async (userId) => {
+  const response = await axios.get(`${baseurl}/${userId}.json`);
+  const data = response.data;
+  return data;
+});
+
 const authSlice = createSlice({
   name: "auth",
   initialState: {
@@ -62,6 +69,7 @@ const authSlice = createSlice({
     error: null,
     isAuthenticated: JSON.parse(localStorage.getItem("isAuth")) || false,
     userId: localStorage.getItem("userId") || null,
+    user: null,
   },
   reducers: {
     clearAuthState: (state) => {
@@ -69,7 +77,7 @@ const authSlice = createSlice({
       state.error = null;
     },
     logout: (state) => {
-      (state.userId = null), (state.isAuthenticated = false);
+      (state.isAuthenticated = false), (state.userId = null);
     },
   },
   extraReducers: (builder) => {
@@ -100,9 +108,20 @@ const authSlice = createSlice({
           (action.error = action.payload),
           (state.isAuthenticated = false);
         state.message = action.payload;
+      })
+      .addCase(profile.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(profile.fulfilled, (state, action) => {
+        (state.loading = false), (state.user = action.payload);
+      })
+      .addCase(profile.rejected, (state, action) => {
+        (state.loading = false),
+          (state.user = null),
+          (state.error = action.payload);
       });
   },
 });
 
-export const { clearAuthState } = authSlice.actions;
+export const { clearAuthState, logout } = authSlice.actions;
 export default authSlice.reducer;

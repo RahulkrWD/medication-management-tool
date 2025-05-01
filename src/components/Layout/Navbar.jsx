@@ -6,31 +6,42 @@ import {
   FaHistory,
   FaHeadset,
   FaSignInAlt,
+  FaTachometerAlt,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { isAuthenticated, userId } = useSelector((state) => state.auth);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  const navItems = [
+  const baseNavItems = [
     { text: "App Features", icon: <FaThList />, id: "features" },
     { text: "Blog", icon: <FaBlog />, id: "blog" },
     { text: "Our Story", icon: <FaHistory />, id: "story" },
     { text: "Support", icon: <FaHeadset />, id: "support" },
-    { text: "Login", icon: <FaSignInAlt />, id: "login" },
   ];
 
+  const authNavItem = isAuthenticated
+    ? {
+        text: "Dashboard",
+        icon: <FaTachometerAlt />,
+        id: `dashboard/${userId}`,
+      }
+    : { text: "Login", icon: <FaSignInAlt />, id: "login" };
+
+  const navItems = [...baseNavItems, authNavItem];
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container">
         {/* Logo/Brand */}
         <motion.div
-          className="navbar-brand"
+          className="navbar-brands"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
