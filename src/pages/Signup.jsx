@@ -8,6 +8,10 @@ import {
   FaBirthdayCake,
   FaHome,
   FaSignInAlt,
+  FaPhone,
+  FaMapMarkerAlt,
+  FaInfoCircle,
+  FaTint,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
@@ -19,12 +23,31 @@ const Signup = () => {
   const dispatch = useDispatch();
   const { loading, error, message } = useSelector((state) => state.auth);
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
     gender: "",
     password: "",
-    age: "",
+    dateOfBirth: "",
+    mobileNumber: "",
+    address: "",
+    bloodGroup: "",
+    languages: [],
+    about: "",
   });
+
+  const languageOptions = [
+    "English",
+    "Spanish",
+    "French",
+    "German",
+    "Hindi",
+    "Chinese",
+    "Arabic",
+    "Other",
+  ];
+
+  const bloodGroups = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
 
   useEffect(() => {
     return () => {
@@ -38,6 +61,22 @@ const Signup = () => {
       ...prev,
       [name]: value,
     }));
+  };
+
+  const handleLanguageChange = (language) => {
+    setFormData((prev) => {
+      if (prev.languages.includes(language)) {
+        return {
+          ...prev,
+          languages: prev.languages.filter((lang) => lang !== language),
+        };
+      } else {
+        return {
+          ...prev,
+          languages: [...prev.languages, language],
+        };
+      }
+    });
   };
 
   const handleSubmit = async (e) => {
@@ -71,7 +110,7 @@ const Signup = () => {
       {/* Main Signup Container */}
       <div className="container">
         <div className="row justify-content-center">
-          <div className="col-md-8 col-lg-6">
+          <div className="col-md-10 col-lg-8">
             <motion.div
               className="signup-container"
               initial={{ scale: 0.9, opacity: 0 }}
@@ -85,13 +124,13 @@ const Signup = () => {
 
               <form onSubmit={handleSubmit}>
                 <div className="signup-grid">
-                  {/* Name Field */}
+                  {/* First Name Field */}
                   <motion.div
                     className="form-group"
                     whileHover={{ scale: 1.02 }}
                   >
-                    <label htmlFor="name" className="form-label">
-                      Full Name
+                    <label htmlFor="firstName" className="form-label">
+                      First Name
                     </label>
                     <div className="input-group">
                       <span className="input-group-text">
@@ -99,11 +138,36 @@ const Signup = () => {
                       </span>
                       <input
                         type="text"
-                        id="name"
-                        name="name"
+                        id="firstName"
+                        name="firstName"
                         className="form-control"
-                        placeholder="Enter your full name"
-                        value={formData.name}
+                        placeholder="Enter your first name"
+                        value={formData.firstName}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                  </motion.div>
+
+                  {/* Last Name Field */}
+                  <motion.div
+                    className="form-group"
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    <label htmlFor="lastName" className="form-label">
+                      Last Name
+                    </label>
+                    <div className="input-group">
+                      <span className="input-group-text">
+                        <FaUser />
+                      </span>
+                      <input
+                        type="text"
+                        id="lastName"
+                        name="lastName"
+                        className="form-control"
+                        placeholder="Enter your last name"
+                        value={formData.lastName}
                         onChange={handleChange}
                         required
                       />
@@ -129,6 +193,31 @@ const Signup = () => {
                         className="form-control"
                         placeholder="Enter your email"
                         value={formData.email}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                  </motion.div>
+
+                  {/* Mobile Number Field */}
+                  <motion.div
+                    className="form-group"
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    <label htmlFor="mobileNumber" className="form-label">
+                      Mobile Number
+                    </label>
+                    <div className="input-group">
+                      <span className="input-group-text">
+                        <FaPhone />
+                      </span>
+                      <input
+                        type="tel"
+                        id="mobileNumber"
+                        name="mobileNumber"
+                        className="form-control"
+                        placeholder="Enter your mobile number"
+                        value={formData.mobileNumber}
                         onChange={handleChange}
                         required
                       />
@@ -166,29 +255,134 @@ const Signup = () => {
                     </div>
                   </motion.div>
 
-                  {/* Age Field */}
+                  {/* Date of Birth Field */}
                   <motion.div
                     className="form-group"
                     whileHover={{ scale: 1.02 }}
                   >
-                    <label htmlFor="age" className="form-label">
-                      Age
+                    <label htmlFor="dateOfBirth" className="form-label">
+                      Date of Birth
                     </label>
                     <div className="input-group">
                       <span className="input-group-text">
                         <FaBirthdayCake />
                       </span>
                       <input
-                        type="number"
-                        id="age"
-                        name="age"
+                        type="date"
+                        id="dateOfBirth"
+                        name="dateOfBirth"
                         className="form-control"
-                        placeholder="Enter your age"
-                        min="1"
-                        max="120"
-                        value={formData.age}
+                        value={formData.dateOfBirth}
                         onChange={handleChange}
                         required
+                      />
+                    </div>
+                  </motion.div>
+
+                  {/* Blood Group Field */}
+                  <motion.div
+                    className="form-group"
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    <label htmlFor="bloodGroup" className="form-label">
+                      Blood Group
+                    </label>
+                    <div className="input-group">
+                      <span className="input-group-text">
+                        <FaTint />
+                      </span>
+                      <select
+                        id="bloodGroup"
+                        name="bloodGroup"
+                        className="form-select"
+                        value={formData.bloodGroup}
+                        onChange={handleChange}
+                      >
+                        <option value="">Select Blood Group</option>
+                        {bloodGroups.map((group) => (
+                          <option key={group} value={group}>
+                            {group}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </motion.div>
+
+                  {/* Address Field */}
+                  <motion.div
+                    className="form-group"
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    <label htmlFor="address" className="form-label">
+                      Address
+                    </label>
+                    <div className="input-group">
+                      <span className="input-group-text">
+                        <FaMapMarkerAlt />
+                      </span>
+                      <input
+                        type="text"
+                        id="address"
+                        name="address"
+                        className="form-control"
+                        placeholder="Enter your address"
+                        value={formData.address}
+                        onChange={handleChange}
+                      />
+                    </div>
+                  </motion.div>
+
+                  {/* Languages Field */}
+                  <motion.div className="form-group">
+                    <label className="form-label">Languages Spoken</label>
+                    <div className="languages-container">
+                      {languageOptions.map((language) => (
+                        <motion.div
+                          key={language}
+                          className={`language-option ${
+                            formData.languages.includes(language)
+                              ? "selected"
+                              : ""
+                          }`}
+                          onClick={() => handleLanguageChange(language)}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          <input
+                            type="checkbox"
+                            id={`language-${language}`}
+                            checked={formData.languages.includes(language)}
+                            onChange={() => handleLanguageChange(language)}
+                            hidden
+                          />
+                          <label htmlFor={`language-${language}`}>
+                            {language}
+                          </label>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </motion.div>
+
+                  {/* About Field */}
+                  <motion.div
+                    className="form-group"
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    <label htmlFor="about" className="form-label">
+                      Tell Us About Yourself
+                    </label>
+                    <div className="input-group">
+                      <span className="input-group-text">
+                        <FaInfoCircle />
+                      </span>
+                      <textarea
+                        id="about"
+                        name="about"
+                        className="form-control"
+                        placeholder="Share something about yourself..."
+                        rows="3"
+                        value={formData.about}
+                        onChange={handleChange}
                       />
                     </div>
                   </motion.div>
@@ -246,7 +440,7 @@ const Signup = () => {
                     </div>
                   )}
                   {message && (
-                    <div className="success-message text-center mt-3 text-danger">
+                    <div className="success-message text-center mt-3 text-success">
                       {message}
                     </div>
                   )}

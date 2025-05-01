@@ -3,7 +3,6 @@ import {
   FaBell,
   FaUserCircle,
   FaSignOutAlt,
-  FaSearch,
   FaBars,
   FaTimes,
 } from "react-icons/fa";
@@ -60,7 +59,7 @@ const DashboardNavbar = ({ toggleSlider, isSliderOpen }) => {
               aria-label="User profile"
             >
               <FaUserCircle className="user-avatar" />
-              <span className="username">{user?.name}</span>
+              <span className="username">{user?.firstName}</span>
             </motion.div>
 
             {isDropdownOpen && (

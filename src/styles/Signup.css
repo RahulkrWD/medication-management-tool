@@ -151,6 +151,43 @@
   .nav-link:hover {
     color: #3498db !important;
   }
+
+  /* Additional CSS for new fields */
+.languages-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.language-option {
+  padding: 8px 12px;
+  border-radius: 20px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.language-option.selected {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Make the form container wider */
+.signup-container {
+  max-width: 800px;
+}
+
+.signup-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
   
   /* Responsive adjustments */
   @media (max-width: 768px) {

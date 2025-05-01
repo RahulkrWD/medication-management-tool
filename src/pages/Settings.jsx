@@ -23,6 +23,7 @@ import {
   FaVolumeMute,
   FaEnvelope,
   FaCheck,
+  FaCog,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 import "../styles/Settings.css";
@@ -69,6 +70,7 @@ function Settings() {
                 animate={{ y: 0 }}
                 transition={{ duration: 0.4 }}
               >
+                <FaCog />
                 Settings
               </motion.h1>
             </Col>

@@ -11,19 +11,17 @@ import {
   Button,
   Badge,
   ListGroup,
-  Tab,
-  Tabs,
+  Alert,
 } from "react-bootstrap";
 import {
-  FaChartLine,
-  FaUserFriends,
   FaPills,
-  FaCalendarAlt,
   FaBell,
-  FaFileMedicalAlt,
+  FaCalendarAlt,
+  FaHistory,
   FaHeartbeat,
-  FaNotesMedical,
   FaExclamationTriangle,
+  FaPlus,
+  FaChartLine,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 import "../styles/Dashboard.css";
@@ -31,85 +29,90 @@ import "../styles/Dashboard.css";
 function Dashboard() {
   const navigate = useNavigate();
   const { isAuthenticated, userId } = useSelector((state) => state.auth);
-  const [activeTab, setActiveTab] = useState("overview");
+  const [medications, setMedications] = useState([]);
+  const [upcomingAppointments, setUpcomingAppointments] = useState([]);
+  const [healthStats, setHealthStats] = useState({});
 
   useEffect(() => {
     if (!isAuthenticated) {
       navigate("/login");
+    } else {
+      // Simulate fetching data
+      fetchPatientData();
     }
   }, [isAuthenticated, navigate]);
 
-  // Sample data
-  const stats = [
-    {
-      title: "Patients Today",
-      value: "12",
-      icon: <FaUserFriends />,
-      color: "primary",
-      progress: 60,
-    },
-    {
-      title: "Appointments",
-      value: "5",
-      icon: <FaCalendarAlt />,
-      color: "success",
-      progress: 75,
-    },
-    {
-      title: "Medications",
-      value: "8",
-      icon: <FaPills />,
-      color: "warning",
-      progress: 45,
-    },
-    {
-      title: "Pending Tasks",
-      value: "3",
-      icon: <FaNotesMedical />,
-      color: "danger",
-      progress: 30,
-    },
-  ];
+  const fetchPatientData = () => {
+    // Mock data - in a real app, this would come from an API
+    setMedications([
+      {
+        id: 1,
+        name: "Amoxicillin",
+        dosage: "500mg",
+        frequency: "Twice daily",
+        nextDose: "Today, 8:00 PM",
+        progress: 75,
+        status: "active",
+      },
+      {
+        id: 2,
+        name: "Lisinopril",
+        dosage: "10mg",
+        frequency: "Once daily",
+        nextDose: "Tomorrow, 7:00 AM",
+        progress: 100,
+        status: "active",
+      },
+      {
+        id: 3,
+        name: "Ibuprofen",
+        dosage: "200mg",
+        frequency: "As needed",
+        nextDose: "As required",
+        progress: 30,
+        status: "active",
+      },
+    ]);
 
-  const recentActivities = [
-    {
-      id: 1,
-      action: "Completed patient checkup",
-      time: "10:30 AM",
-      status: "completed",
-    },
-    {
-      id: 2,
-      action: "Prescribed new medication",
-      time: "11:45 AM",
-      status: "completed",
-    },
-    {
-      id: 3,
-      action: "Upcoming appointment",
-      time: "02:15 PM",
-      status: "pending",
-    },
-    {
-      id: 4,
-      action: "Lab results received",
-      time: "Yesterday",
-      status: "completed",
-    },
-    {
-      id: 5,
-      action: "Patient consultation",
-      time: "Yesterday",
-      status: "completed",
-    },
-  ];
+    setUpcomingAppointments([
+      {
+        id: 1,
+        date: "2023-06-15",
+        time: "10:30 AM",
+        doctor: "Dr. Smith",
+        purpose: "Follow-up",
+      },
+      {
+        id: 2,
+        date: "2023-07-01",
+        time: "02:15 PM",
+        doctor: "Dr. Johnson",
+        purpose: "Annual Checkup",
+      },
+    ]);
 
-  const vitalStats = [
-    { name: "Blood Pressure", value: "120/80", status: "normal" },
-    { name: "Heart Rate", value: "72 bpm", status: "normal" },
-    { name: "Temperature", value: "98.6°F", status: "normal" },
-    { name: "Blood Sugar", value: "110 mg/dL", status: "warning" },
-  ];
+    setHealthStats({
+      bloodPressure: "120/80",
+      heartRate: "72 bpm",
+      bloodSugar: "110 mg/dL",
+      lastUpdated: "Today, 9:15 AM",
+    });
+  };
+
+  const handleTakeMedication = (id) => {
+    setMedications(
+      medications.map((med) =>
+        med.id === id ? { ...med, progress: 100 } : med
+      )
+    );
+  };
+
+  const getMedicationStatus = (progress) => {
+    if (progress === 100) return "Taken";
+    if (progress > 75) return "Almost due";
+    if (progress > 50) return "Pending";
+    return "Upcoming";
+  };
 
   return (
     <DashboardLayout>
@@ -117,7 +120,7 @@ function Dashboard() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="dashboard-page"
+        className="patient-dashboard"
       >
         <Container fluid>
           {/* Header Section */}
@@ -130,227 +133,207 @@ function Dashboard() {
                 transition={{ duration: 0.4 }}
               >
                 <FaChartLine className="me-2" />
-                Dashboard Overview
+                My Health Dashboard
               </motion.h1>
             </Col>
           </Row>
 
-          {/* Stats Cards */}
-          <Row className="mb-4 g-4">
-            {stats.map((stat, index) => (
-              <Col xl={3} lg={6} key={index}>
-                <motion.div
-                  whileHover={{ y: -5 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <Card className={`stat-card border-${stat.color} shadow-sm`}>
-                    <Card.Body>
-                      <div className="d-flex justify-content-between align-items-center mb-3">
-                        <div>
-                          <h6 className="text-uppercase text-muted mb-2">
-                            {stat.title}
-                          </h6>
-                          <h2 className="mb-0">{stat.value}</h2>
-                        </div>
-                        <div
-                          className={`icon-circle bg-${stat.color}-light text-${stat.color}`}
-                        >
-                          {stat.icon}
-                        </div>
-                      </div>
-                      <ProgressBar
-                        now={stat.progress}
-                        variant={stat.color}
-                        className="progress-sm"
-                      />
-                    </Card.Body>
-                  </Card>
-                </motion.div>
-              </Col>
-            ))}
+          {/* Alerts Section */}
+          <Row className="mb-4">
+            <Col>
+              <Alert variant="warning" className="d-flex align-items-center">
+                <FaExclamationTriangle className="me-2" />
+                <div>
+                  <strong>Medication Reminder:</strong> Your Amoxicillin dose is
+                  due at 8:00 PM
+                </div>
+              </Alert>
+            </Col>
           </Row>
 
           {/* Main Content */}
           <Row className="g-4">
-            {/* Left Column */}
-            <Col lg={8}>
-              <Card className="shadow-sm mb-4">
+            {/* Medications Column */}
+            <Col lg={6}>
+              <Card className="shadow-sm h-100">
                 <Card.Body>
-                  <Tabs
-                    activeKey={activeTab}
-                    onSelect={(k) => setActiveTab(k)}
-                    className="mb-3"
-                  >
-                    <Tab eventKey="overview" title="Overview">
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <div className="dashboard-grid">
-                          <div className="grid-item vital-stats">
-                            <h5 className="mb-3">Vital Statistics</h5>
-                            <ListGroup variant="flush">
-                              {vitalStats.map((stat, index) => (
-                                <ListGroup.Item
-                                  key={index}
-                                  className="d-flex justify-content-between align-items-center"
-                                >
-                                  <div>
-                                    {stat.name}
-                                    {stat.status === "warning" && (
-                                      <FaExclamationTriangle className="ms-2 text-warning" />
-                                    )}
-                                  </div>
-                                  <Badge
-                                    bg={
-                                      stat.status === "normal"
-                                        ? "success"
-                                        : "warning"
-                                    }
-                                    className="fs-6"
-                                  >
-                                    {stat.value}
-                                  </Badge>
-                                </ListGroup.Item>
-                              ))}
-                            </ListGroup>
-                          </div>
-                          <div className="grid-item quick-actions">
-                            <h5 className="mb-3">Quick Actions</h5>
-                            <div className="actions-grid">
-                              <motion.div
-                                className="action-item"
-                                whileHover={{ scale: 1.05 }}
-                              >
-                                <Button
-                                  variant="outline-primary"
-                                  className="w-100"
-                                >
-                                  <FaFileMedicalAlt className="me-2" />
-                                  New Prescription
-                                </Button>
-                              </motion.div>
-                              <motion.div
-                                className="action-item"
-                                whileHover={{ scale: 1.05 }}
-                              >
-                                <Button
-                                  variant="outline-success"
-                                  className="w-100"
-                                >
-                                  <FaCalendarAlt className="me-2" />
-                                  Schedule Appointment
-                                </Button>
-                              </motion.div>
-                              <motion.div
-                                className="action-item"
-                                whileHover={{ scale: 1.05 }}
-                              >
-                                <Button
-                                  variant="outline-warning"
-                                  className="w-100"
-                                >
-                                  <FaNotesMedical className="me-2" />
-                                  Add Patient Note
-                                </Button>
-                              </motion.div>
-                              <motion.div
-                                className="action-item"
-                                whileHover={{ scale: 1.05 }}
-                              >
-                                <Button
-                                  variant="outline-info"
-                                  className="w-100"
-                                >
-                                  <FaHeartbeat className="me-2" />
-                                  Record Vitals
-                                </Button>
-                              </motion.div>
+                  <div className="d-flex justify-content-between align-items-center mb-3">
+                    <h5>
+                      <FaPills className="me-2" />
+                      My Medications
+                    </h5>
+                    <Button variant="outline-primary" size="sm">
+                      <FaPlus className="me-1" />
+                      Add Medication
+                    </Button>
+                  </div>
+
+                  {medications.length === 0 ? (
+                    <div className="text-center py-4 text-muted">
+                      No medications found
+                    </div>
+                  ) : (
+                    <div className="medications-list">
+                      {medications.map((medication) => (
+                        <motion.div
+                          key={medication.id}
+                          className="medication-item"
+                          whileHover={{ y: -2 }}
+                        >
+                          <div className="medication-header">
+                            <div>
+                              <h6>{medication.name}</h6>
+                              <small className="text-muted">
+                                {medication.dosage} • {medication.frequency}
+                              </small>
                             </div>
+                            <Badge
+                              bg={
+                                medication.progress === 100
+                                  ? "success"
+                                  : "warning"
+                              }
+                            >
+                              {getMedicationStatus(medication.progress)}
+                            </Badge>
                           </div>
-                        </div>
-                      </motion.div>
-                    </Tab>
-                    <Tab eventKey="reports" title="Reports">
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <div className="text-center py-4">
-                          <h5>Medical Reports</h5>
-                          <p className="text-muted">
-                            Reports analysis would appear here
-                          </p>
-                        </div>
-                      </motion.div>
-                    </Tab>
-                  </Tabs>
+
+                          <div className="medication-details">
+                            <div className="d-flex justify-content-between mb-2">
+                              <span>Next dose:</span>
+                              <strong>{medication.nextDose}</strong>
+                            </div>
+                            <ProgressBar
+                              now={medication.progress}
+                              variant={
+                                medication.progress === 100
+                                  ? "success"
+                                  : "primary"
+                              }
+                              className="mb-2"
+                            />
+                          </div>
+
+                          <div className="medication-actions">
+                            {medication.progress < 100 && (
+                              <Button
+                                variant="outline-success"
+                                size="sm"
+                                onClick={() =>
+                                  handleTakeMedication(medication.id)
+                                }
+                              >
+                                Mark as Taken
+                              </Button>
+                            )}
+                            <Button variant="outline-primary" size="sm">
+                              Details
+                            </Button>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  )}
                 </Card.Body>
               </Card>
             </Col>
 
-            {/* Right Column */}
-            <Col lg={4}>
-              <Card className="shadow-sm mb-4">
-                <Card.Body>
-                  <h5 className="mb-3">
-                    <FaBell className="me-2" />
-                    Recent Activities
-                  </h5>
-                  <ListGroup variant="flush">
-                    {recentActivities.map((activity) => (
-                      <motion.div key={activity.id} whileHover={{ x: 5 }}>
-                        <ListGroup.Item className="d-flex justify-content-between align-items-start">
-                          <div className="ms-2 me-auto">
-                            <div className="fw-bold">{activity.action}</div>
-                            <small className="text-muted">
-                              {activity.time}
-                            </small>
-                          </div>
-                          <Badge
-                            bg={
-                              activity.status === "completed"
-                                ? "success"
-                                : "warning"
-                            }
-                          >
-                            {activity.status}
-                          </Badge>
-                        </ListGroup.Item>
-                      </motion.div>
-                    ))}
-                  </ListGroup>
-                </Card.Body>
-              </Card>
+            {/* Right Column - Appointments and Health Stats */}
+            <Col lg={6}>
+              <Row className="g-4">
+                {/* Appointments */}
+                <Col md={12}>
+                  <Card className="shadow-sm">
+                    <Card.Body>
+                      <h5 className="mb-3">
+                        <FaCalendarAlt className="me-2" />
+                        Upcoming Appointments
+                      </h5>
+                      {upcomingAppointments.length === 0 ? (
+                        <div className="text-center py-2 text-muted">
+                          No upcoming appointments
+                        </div>
+                      ) : (
+                        <ListGroup variant="flush">
+                          {upcomingAppointments.map((appointment) => (
+                            <ListGroup.Item key={appointment.id}>
+                              <div className="d-flex justify-content-between">
+                                <div>
+                                  <h6 className="mb-1">{appointment.doctor}</h6>
+                                  <small className="text-muted">
+                                    {appointment.purpose}
+                                  </small>
+                                </div>
+                                <div className="text-end">
+                                  <div>{appointment.date}</div>
+                                  <small className="text-muted">
+                                    {appointment.time}
+                                  </small>
+                                </div>
+                              </div>
+                            </ListGroup.Item>
+                          ))}
+                        </ListGroup>
+                      )}
+                    </Card.Body>
+                  </Card>
+                </Col>
 
-              <Card className="shadow-sm">
-                <Card.Body>
-                  <h5 className="mb-3">
-                    <FaExclamationTriangle className="me-2 text-warning" />
-                    Important Alerts
-                  </h5>
-                  <div className="alert-item">
-                    <div className="alert-content">
-                      <strong>Medication Refill</strong>
-                      <p className="mb-0">Patient: John Smith - Amoxicillin</p>
-                    </div>
-                    <Button variant="outline-warning" size="sm">
-                      Review
-                    </Button>
-                  </div>
-                  <div className="alert-item">
-                    <div className="alert-content">
-                      <strong>Lab Results</strong>
-                      <p className="mb-0">New results available for review</p>
-                    </div>
-                    <Button variant="outline-info" size="sm">
-                      View
-                    </Button>
-                  </div>
-                </Card.Body>
-              </Card>
+                {/* Health Stats */}
+                <Col md={12}>
+                  <Card className="shadow-sm">
+                    <Card.Body>
+                      <h5 className="mb-3">
+                        <FaHeartbeat className="me-2" />
+                        Health Statistics
+                      </h5>
+                      <div className="health-stats-grid">
+                        <div className="stat-item">
+                          <div className="stat-label">Blood Pressure</div>
+                          <div className="stat-value">
+                            {healthStats.bloodPressure}
+                          </div>
+                          <Badge bg="success">Normal</Badge>
+                        </div>
+                        <div className="stat-item">
+                          <div className="stat-label">Heart Rate</div>
+                          <div className="stat-value">
+                            {healthStats.heartRate}
+                          </div>
+                          <Badge bg="success">Normal</Badge>
+                        </div>
+                        <div className="stat-item">
+                          <div className="stat-label">Blood Sugar</div>
+                          <div className="stat-value">
+                            {healthStats.bloodSugar}
+                          </div>
+                          <Badge bg="warning">Slightly High</Badge>
+                        </div>
+                      </div>
+                      <div className="text-muted mt-2">
+                        Last updated: {healthStats.lastUpdated}
+                      </div>
+                    </Card.Body>
+                  </Card>
+                </Col>
+
+                {/* Medication History */}
+                <Col md={12}>
+                  <Card className="shadow-sm">
+                    <Card.Body>
+                      <h5 className="mb-3">
+                        <FaHistory className="me-2" />
+                        Medication History
+                      </h5>
+                      <div className="text-center py-2">
+                        <Button variant="outline-secondary">
+                          View Full History
+                        </Button>
+                      </div>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              </Row>
             </Col>
           </Row>
         </Container>

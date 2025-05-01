@@ -1,187 +1,31 @@
-/* Profile Page Styles */
-.profile-page {
-    padding: 2rem 0;
-  }
-  
-  .page-title {
-    font-weight: 600;
-    color: #2c3e50;
-    margin-bottom: 1.5rem;
-  }
-  
-  /* Profile Card */
-  .profile-card {
-    border-radius: 12px;
-    border: none;
-    overflow: hidden;
-    transition: all 0.3s ease;
-  }
-  
-  .profile-avatar {
-    border: 4px solid #4a6491;
-    border-radius: 50%;
-    display: inline-block;
-    padding: 3px;
-  }
-  
-  .profile-details {
-    text-align: left;
-    margin-top: 1.5rem;
-  }
-  
-  .detail-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  }
-  
-  .detail-icon {
-    margin-right: 1rem;
-    color: #4a6491;
-    min-width: 20px;
-  }
-  
-  /* Stats Cards */
-  .stat-card {
-    border-radius: 10px;
-    transition: all 0.3s ease;
-  }
-  
-  .stat-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  }
-  
-  .icon-circle {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-  }
-  
-  .bg-primary-light {
-    background-color: rgba(13, 110, 253, 0.1);
-  }
-  
-  .bg-success-light {
-    background-color: rgba(25, 135, 84, 0.1);
-  }
-  
-  .bg-warning-light {
-    background-color: rgba(255, 193, 7, 0.1);
-  }
-  
-  .bg-info-light {
-    background-color: rgba(13, 202, 240, 0.1);
-  }
-  
-  /* Skills Grid */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 0.75rem;
-    margin: 1rem 0;
-  }
-  
-  .skill-item {
-    background: #f8f9fa;
-    padding: 0.5rem 1rem;
-    border-radius: 50px;
-    text-align: center;
-    font-size: 0.85rem;
-    transition: all 0.3s ease;
-  }
-  
-  .skill-item:hover {
-    background: #e9ecef;
-    transform: translateY(-2px);
-  }
-  
-  /* Activity Timeline */
-  .activity-timeline {
-    position: relative;
-    padding-left: 2rem;
-    margin-top: 1.5rem;
-  }
-  
-  .timeline-item {
-    position: relative;
-    padding-bottom: 1.5rem;
-  }
-  
-  .timeline-marker {
-    position: absolute;
-    left: -2rem;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: #4a6491;
-    top: 4px;
-  }
-  
-  .timeline-content {
-    padding-left: 1rem;
-  }
-  
-  .timeline-item:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    left: -1.92rem;
-    top: 20px;
-    height: calc(100% - 20px);
-    width: 2px;
-    background: #dee2e6;
-  }
-  
-  /* Settings Grid */
-  .settings-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-  }
-  
-  .setting-item {
-    background: #f8f9fa;
-    padding: 1.5rem;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-  }
-  
-  .setting-item:hover {
-    background: #e9ecef;
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  }
-  
-  /* Responsive Adjustments */
-  @media (max-width: 992px) {
-    .profile-card {
-      margin-bottom: 2rem;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .skills-grid {
-      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    }
-    
-    .settings-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-  
-  @media (max-width: 576px) {
-    .page-title {
-      font-size: 1.75rem;
-    }
-    
-    .profile-avatar img {
-      width: 120px;
-    }
-  }
+.patient-profile {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.profile-card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-details p {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.stat-card {
+  border-left-width: 5px !important;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.stat-icon {
+  font-size: 1.5rem;
+}

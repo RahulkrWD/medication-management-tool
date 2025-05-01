@@ -13,6 +13,7 @@
   --transition: all 0.3s ease;
 }
 
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -312,9 +313,8 @@ body {
   }
 }
 
-/* main content */
-/* Dashboard Page Styles */
-.dashboard-page {
+/* Patient Dashboard Styles */
+.patient-dashboard {
   padding: 2rem 0;
 }
 
@@ -325,142 +325,94 @@ body {
   align-items: center;
 }
 
-/* Stats Cards */
-.stat-card {
-  border-radius: 10px;
-  transition: all 0.3s ease;
-}
-
-.stat-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.icon-circle {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-}
-
-.bg-primary-light {
-  background-color: rgba(13, 110, 253, 0.1);
-}
-
-.bg-success-light {
-  background-color: rgba(25, 135, 84, 0.1);
-}
-
-.bg-warning-light {
-  background-color: rgba(255, 193, 7, 0.1);
-}
-
-.bg-danger-light {
-  background-color: rgba(220, 53, 69, 0.1);
-}
-
-.progress-sm {
-  height: 6px;
-}
-
-/* Dashboard Grid Layout */
-.dashboard-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
-  gap: 1.5rem;
-}
-
-.chart-container {
-  grid-column: 1 / span 2;
-  grid-row: 1;
-}
-
-.vital-stats {
-  grid-column: 1;
-  grid-row: 2;
-}
-
-.quick-actions {
-  grid-column: 2;
-  grid-row: 2;
-}
-
-.chart-placeholder {
-  height: 300px;
-  background-color: #f8f9fa;
-  border-radius: 8px;
-  border: 1px dashed #dee2e6;
-}
-
-/* Actions Grid */
-.actions-grid {
+/* Medications List */
+.medications-list {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
 }
 
-.action-item {
+.medication-item {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  border-left: 4px solid #4a6491;
   transition: all 0.3s ease;
 }
 
-/* Alert Items */
-.alert-item {
+.medication-item:hover {
+  background-color: #e9ecef;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.medication-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 1rem 0;
-  border-bottom: 1px solid #eee;
+  align-items: flex-start;
+  margin-bottom: 1rem;
 }
 
-.alert-item:last-child {
-  border-bottom: none;
+.medication-details {
+  margin-bottom: 1rem;
 }
 
-.alert-content {
-  flex: 1;
-  padding-right: 1rem;
+.medication-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Health Stats Grid */
+.health-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.stat-item {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
 /* Responsive Adjustments */
-@media (max-width: 1199px) {
-  .dashboard-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .chart-container,
-  .vital-stats,
-  .quick-actions {
-    grid-column: auto;
-    grid-row: auto;
+@media (max-width: 992px) {
+  .health-stats-grid {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
-@media (max-width: 767px) {
-  .stat-card {
-    margin-bottom: 1rem;
+@media (max-width: 768px) {
+  .health-stats-grid {
+    grid-template-columns: 1fr;
   }
   
-  .actions-grid {
-    grid-template-columns: 1fr;
+  .medication-header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .medication-actions {
+    justify-content: flex-start;
   }
 }
 
-@media (max-width: 575px) {
+@media (max-width: 576px) {
   .page-title {
     font-size: 1.75rem;
-  }
-  
-  .alert-item {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .alert-item button {
-    margin-top: 0.5rem;
-    align-self: flex-end;
   }
 }
