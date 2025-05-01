@@ -11,7 +11,6 @@ import Features from "./pages/Features";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import Medications from "./pages/Medications";
-import Schedule from "./pages/Schedule";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
 function App() {
@@ -27,7 +26,6 @@ function App() {
       <Route path="/signup" element={<Signup />} />
       <Route path="/dashboard/:id" element={<Dashboard />} />
       <Route path="/medications/:id" element={<Medications />} />
-      <Route path="/schedule/:id" element={<Schedule />} />
       <Route path="/profile/:id" element={<Profile />} />
       <Route path="/settings/:id" element={<Settings />} />
     </Routes>

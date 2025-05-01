@@ -1,0 +1,123 @@
+/* Medications Page Styles */
+.medications-page {
+    padding: 2rem 0;
+  }
+  
+  .page-title {
+    font-weight: 600;
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Medications Grid Layout */
+  .medications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .medication-card {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    border-left: 4px solid #4a6491;
+  }
+  
+  .medication-card:hover {
+    background-color: #e9ecef;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transform: translateY(-2px);
+  }
+  
+  .medication-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .medication-name {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+  }
+  
+  .medication-name svg {
+    color: #4a6491;
+  }
+  
+  .medication-details {
+    margin-bottom: 1.5rem;
+  }
+  
+  .detail-row {
+    display: flex;
+    margin-bottom: 0.5rem;
+  }
+  
+  .detail-label {
+    font-weight: 500;
+    min-width: 120px;
+    color: #6c757d;
+  }
+  
+  .medication-actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+  }
+  
+  /* Modal Styles */
+  .modal-header {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  
+  .modal-title {
+    display: flex;
+    align-items: center;
+  }
+  
+  .modal-title svg {
+    color: #4a6491;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 992px) {
+    .medications-grid {
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .medication-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    
+    .detail-row {
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    
+    .detail-label {
+      min-width: auto;
+    }
+    
+    .medication-actions {
+      justify-content: flex-start;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .page-title {
+      font-size: 1.75rem;
+    }
+    
+    .medications-grid {
+      grid-template-columns: 1fr;
+    }
+  }

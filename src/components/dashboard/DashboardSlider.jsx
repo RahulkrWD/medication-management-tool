@@ -39,14 +39,9 @@ const DashboardSlider = ({ isOpen, toggleSlider, isMobile }) => {
       icon: <FaPills />,
       path: `/medications/${userId}`,
     },
-    {
-      id: 3,
-      name: "Schedule",
-      icon: <FaCalendarAlt />,
-      path: `/schedule/${userId}`,
-    },
-    { id: 6, name: "Profile", icon: <FaUser />, path: `/profile/${userId}` },
-    { id: 7, name: "Settings", icon: <FaCog />, path: `/settings/${userId}` },
+
+    { id: 3, name: "Profile", icon: <FaUser />, path: `/profile/${userId}` },
+    { id: 4, name: "Settings", icon: <FaCog />, path: `/settings/${userId}` },
   ];
 
   return (
