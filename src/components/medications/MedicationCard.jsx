@@ -1,20 +1,26 @@
 import React, { useMemo } from "react";
-import { Badge, Button } from "react-bootstrap";
+import { Badge, Button, Dropdown } from "react-bootstrap";
 import { FaPills, FaCheck } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { useDispatch } from "react-redux";
+import { updateStatus } from "../../redux/Medications";
 
 const statusBadges = {
   active: <Badge bg="success">Active</Badge>,
+  expired: <Badge bg="danger">Expired</Badge>,
   completed: <Badge bg="primary">Completed</Badge>,
   missed: <Badge bg="warning">Missed</Badge>,
-  expired: <Badge bg="danger">Expired</Badge>,
-  default: <Badge bg="secondary">Unknown</Badge>,
 };
 
 const MedicationCard = React.memo(({ medication }) => {
+  const dispatch = useDispatch();
   const statusBadge = useMemo(() => {
     return statusBadges[medication.status] || statusBadges.default;
   }, [medication.status]);
+
+  const handleStatusUpdate = (newStatus) => {
+    dispatch(updateStatus({ id: medication.id, status: newStatus }));
+  };
 
   return (
     <motion.div
@@ -64,14 +70,25 @@ const MedicationCard = React.memo(({ medication }) => {
             Mark as Taken
           </Button>
         )}
-        <Button
-          as={motion.div}
-          variant="outline-primary"
-          size="sm"
-          whileHover={{ scale: 1.05 }}
-        >
-          Details
-        </Button>
+        <Dropdown>
+          <Dropdown.Toggle variant="outline-primary">
+            Update Status
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            <Dropdown.Item onClick={() => handleStatusUpdate("active")}>
+              Active
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => handleStatusUpdate("completed")}>
+              Completed
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => handleStatusUpdate("expired")}>
+              Expired
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => handleStatusUpdate("missed")}>
+              Missed
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
       </div>
     </motion.div>
   );

@@ -34,6 +34,20 @@ export const getMedications = createAsyncThunk(
   }
 );
 
+export const updateStatus = createAsyncThunk(
+  "updateMedications",
+  async ({ id, status }) => {
+    try {
+      const response = await axios.patch(`${baseurl}/${id}.json`, { status });
+      if (response.status == 200) {
+        return { id, status };
+      }
+    } catch (error) {
+      return "Something went wrong";
+    }
+  }
+);
+
 const medicationSlice = createSlice({
   name: "medications",
   initialState: {
@@ -63,6 +77,20 @@ const medicationSlice = createSlice({
         (state.loading = false),
           (state.medication = []),
           (state.error = action.payload);
+      })
+      .addCase(updateStatus.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(updateStatus.fulfilled, (state, action) => {
+        state.loading = false;
+        const { id, status } = action.payload;
+        state.medication = state.medication.map((med) =>
+          med.id == id ? { ...med, status } : med
+        );
+      })
+      .addCase(updateStatus.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       });
   },
 });
