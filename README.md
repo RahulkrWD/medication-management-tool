@@ -1,12 +1,76 @@
-# React + Vite
+# 💊 Prescription and Medication Management Tool – Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive and user-friendly medication management web application built using React.js and Firebase.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔗 Live Demo
 
-## Expanding the ESLint configuration
+[Click here to view the app](https://medication-management-tool.vercel.app/)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Tech Stack
+
+- **React.js (Vite)** – Fast and modern frontend development
+- **Redux Toolkit** – Efficient and scalable state management
+- **Firebase Realtime Database** – For storing and syncing medication data
+- **React Bootstrap** – Responsive and styled UI components
+- **Framer Motion** – Smooth and elegant animations
+- **Font Awesome** – Clean and intuitive icons
+
+---
+
+## ✨ Features
+
+### 📋 Medication Management
+
+- **Add Medications**: Enter name, dosage, frequency, and instructions.
+- **View Medications**: Displayed in a responsive card layout.
+- **Filter & Search**: Search by medication name or filter by status (Active, Expired, Completed, Missed).
+- **Update Status**: Easily change medication status from a dropdown.
+
+### 🎨 UI/UX
+
+- **Responsive Design**: Optimized for mobile, tablet, and desktop.
+- **Animated Transitions**: Using Framer Motion.
+- **Status Badges**: Color-coded indicators for quick status recognition.
+- **Intuitive Icons**: Powered by Font Awesome.
+
+---
+
+## ⚙️ Key Highlights
+
+- 🔄 Real-time data updates with **Firebase**
+- 🔧 Global state handling via **Redux Toolkit**
+- 📄 Built with **React + Vite** for optimized performance
+- 📚 Pagination support for better list handling
+
+---
+
+## 🚀 Getting Started
+
+Follow the steps below to run the project locally:
+
+```bash
+# Step 1: Clone the repository
+git clone https://github.com/RahulkrWD/medication-management-tool.git
+
+# Step 2: Navigate into the project directory
+cd medication-management-tool
+
+# Step 3: Install dependencies
+npm install
+
+# Step 4: Start the development server
+npm run dev
+```
+
+# 📸 Screenshots ### Customer Interface
+
+![home page](./screenshoot/home.png)
+![Blog page](./screenshoot/blog.png)
+![eatures page](./screenshoot/feature.png)
+![Medication page](./screenshoot/medication.png)
+![Profile page](./screenshoot/profile.png)
+![Signup page](./screenshoot/signup.png)
