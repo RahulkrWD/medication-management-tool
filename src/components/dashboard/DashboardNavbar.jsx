@@ -34,7 +34,10 @@ const DashboardNavbar = ({ toggleSlider, isSliderOpen }) => {
           >
             {isSliderOpen ? <FaTimes /> : <FaBars />}
           </motion.button>
-          <Link to={`/dashboard/${userId}`} className="navbar-brand-dashboard">
+          <Link
+            to={`/medications/${userId}`}
+            className="navbar-brand-dashboard"
+          >
             Medisafe Dashboard
           </Link>
         </div>

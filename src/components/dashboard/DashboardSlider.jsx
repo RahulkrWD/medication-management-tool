@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  FaHome,
-  FaPills,
-  FaUser,
-  FaCog,
-  FaCalendarAlt,
-  FaSignOutAlt,
-} from "react-icons/fa";
+import { FaPills, FaUser, FaCog, FaSignOutAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../../styles/Dashboard.css";
@@ -27,12 +20,6 @@ const DashboardSlider = ({ isOpen, toggleSlider, isMobile }) => {
   }
 
   const menuItems = [
-    {
-      id: 1,
-      name: "Dashboard",
-      icon: <FaHome />,
-      path: `/dashboard/${userId}`,
-    },
     {
       id: 2,
       name: "Medications",

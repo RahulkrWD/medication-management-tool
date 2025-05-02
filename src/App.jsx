@@ -9,7 +9,6 @@ import Story from "./pages/Story";
 import Blog from "./pages/Blog";
 import Features from "./pages/Features";
 import Signup from "./pages/Signup";
-import Dashboard from "./pages/Dashboard";
 import Medications from "./pages/Medications";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
@@ -24,7 +23,6 @@ function App() {
       <Route path="/blog" element={<Blog />} />
       <Route path="/features" element={<Features />} />
       <Route path="/signup" element={<Signup />} />
-      <Route path="/dashboard/:id" element={<Dashboard />} />
       <Route path="/medications/:id" element={<Medications />} />
       <Route path="/profile/:id" element={<Profile />} />
       <Route path="/settings/:id" element={<Settings />} />

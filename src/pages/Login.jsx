@@ -23,7 +23,7 @@ const Login = () => {
     if (isAuthenticated && userId) {
       localStorage.setItem("isAuth", JSON.stringify(isAuthenticated));
       localStorage.setItem("userId", userId);
-      navigate(`/dashboard/${userId}`);
+      navigate(`/medications/${userId}`);
     }
   }, [isAuthenticated, userId, navigate]);
   const [rememberMe, setRememberMe] = useState(false);

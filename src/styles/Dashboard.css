@@ -1,4 +1,3 @@
-/* ===== BASE STYLES ===== */
 :root {
   --sidebar-width: 280px;
   --navbar-height: 70px;
@@ -24,7 +23,6 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* ===== DASHBOARD LAYOUT ===== */
 .dashboard-layout {
   display: flex;
   flex-direction: column;
@@ -51,7 +49,6 @@ body {
   margin-left: 0;
 }
 
-/* ===== NAVBAR STYLES ===== */
 .dashboard-navbar {
   background: white;
   box-shadow: var(--shadow-sm);
@@ -109,10 +106,6 @@ body {
   max-width: 600px;
   margin: 0 1rem;
 }
-
-
-
-
 
 .navbar-right {
   display: flex;
@@ -196,7 +189,6 @@ body {
 
 
 
-/* ===== SIDEBAR STYLES ===== */
 .slider-sidebar {
   background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
   color: var(--text-light);
@@ -265,7 +257,7 @@ body {
   font-weight: 500;
 }
 
-/* ===== RESPONSIVE STYLES ===== */
+
 @media (max-width: 1199px) {
   .navbar-brand-dashboard {
     font-size: 1rem;
@@ -310,109 +302,5 @@ body {
   .dashboard-main-content {
     padding: 1rem;
     padding-top: calc(var(--navbar-height));
-  }
-}
-
-/* Patient Dashboard Styles */
-.patient-dashboard {
-  padding: 2rem 0;
-}
-
-.page-title {
-  font-weight: 600;
-  color: #2c3e50;
-  display: flex;
-  align-items: center;
-}
-
-/* Medications List */
-.medications-list {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-}
-
-.medication-item {
-  background-color: #f8f9fa;
-  border-radius: 8px;
-  padding: 1.25rem;
-  margin-bottom: 1rem;
-  border-left: 4px solid #4a6491;
-  transition: all 0.3s ease;
-}
-
-.medication-item:hover {
-  background-color: #e9ecef;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.medication-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 1rem;
-}
-
-.medication-details {
-  margin-bottom: 1rem;
-}
-
-.medication-actions {
-  display: flex;
-  gap: 0.5rem;
-}
-
-/* Health Stats Grid */
-.health-stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.stat-item {
-  background-color: #f8f9fa;
-  border-radius: 8px;
-  padding: 1rem;
-  text-align: center;
-}
-
-.stat-label {
-  font-size: 0.9rem;
-  color: #6c757d;
-  margin-bottom: 0.5rem;
-}
-
-.stat-value {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 992px) {
-  .health-stats-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 768px) {
-  .health-stats-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .medication-header {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  .medication-actions {
-    justify-content: flex-start;
-  }
-}
-
-@media (max-width: 576px) {
-  .page-title {
-    font-size: 1.75rem;
   }
 }

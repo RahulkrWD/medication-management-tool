@@ -31,7 +31,7 @@ const Navbar = () => {
     ? {
         text: "Dashboard",
         icon: <FaTachometerAlt />,
-        id: `dashboard/${userId}`,
+        id: `medications/${userId}`,
       }
     : { text: "Login", icon: <FaSignInAlt />, id: "login" };
 
