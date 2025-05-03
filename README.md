@@ -74,3 +74,7 @@ npm run dev
 ![Medication page](./screenshoot/medication.png)
 ![Profile page](./screenshoot/profile.png)
 ![Signup page](./screenshoot/signup.png)
+
+### Video presentation link of project
+
+[Video link](https://drive.google.com/file/d/1GCtE7FKHGDnRFXuBqNvQdE5MdPkIrPB_/view?usp=sharing)
