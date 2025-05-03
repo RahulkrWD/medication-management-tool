@@ -1,3 +1,4 @@
+/* ===== BASE STYLES ===== */
 :root {
   --sidebar-width: 280px;
   --navbar-height: 70px;
@@ -23,6 +24,7 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* ===== DASHBOARD LAYOUT ===== */
 .dashboard-layout {
   display: flex;
   flex-direction: column;
@@ -49,6 +51,7 @@ body {
   margin-left: 0;
 }
 
+/* ===== NAVBAR STYLES ===== */
 .dashboard-navbar {
   background: white;
   box-shadow: var(--shadow-sm);
@@ -106,6 +109,10 @@ body {
   max-width: 600px;
   margin: 0 1rem;
 }
+
+
+
+
 
 .navbar-right {
   display: flex;
@@ -189,6 +196,7 @@ body {
 
 
 
+/* ===== SIDEBAR STYLES ===== */
 .slider-sidebar {
   background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
   color: var(--text-light);
@@ -257,7 +265,7 @@ body {
   font-weight: 500;
 }
 
-
+/* ===== RESPONSIVE STYLES ===== */
 @media (max-width: 1199px) {
   .navbar-brand-dashboard {
     font-size: 1rem;
@@ -304,3 +312,4 @@ body {
     padding-top: calc(var(--navbar-height));
   }
 }
+

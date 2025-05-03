@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import "../../styles/Dashboard.css";
 import { useDispatch, useSelector } from "react-redux";
+import { QuestionCircleOutlined } from "@ant-design/icons";
 import { profile } from "../../redux/AuthSlice";
 import { useBeginTour } from "../../context/BeginTourProvider";
 
@@ -53,7 +54,7 @@ const DashboardNavbar = ({ toggleSlider, isSliderOpen }) => {
                 marginRight: "15px",
               }}
             >
-              Take a Tour
+              <QuestionCircleOutlined />
             </button>
           </motion.div>
 
