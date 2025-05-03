@@ -5,12 +5,14 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../../styles/Dashboard.css";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/AuthSlice";
+import { useBeginTour } from "../../context/BeginTourProvider";
 
 const DashboardSlider = ({ isOpen, toggleSlider, isMobile }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const { userId } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const { refs } = useBeginTour();
 
   function handleLogout() {
     dispatch(logout());
@@ -21,14 +23,26 @@ const DashboardSlider = ({ isOpen, toggleSlider, isMobile }) => {
 
   const menuItems = [
     {
-      id: 2,
+      id: 1,
       name: "Medications",
       icon: <FaPills />,
       path: `/medications/${userId}`,
+      ref: refs.medicationsRef,
     },
-
-    { id: 3, name: "Profile", icon: <FaUser />, path: `/profile/${userId}` },
-    { id: 4, name: "Settings", icon: <FaCog />, path: `/settings/${userId}` },
+    {
+      id: 2,
+      name: "Profile",
+      icon: <FaUser />,
+      path: `/profile/${userId}`,
+      ref: refs.profileRef,
+    },
+    {
+      id: 3,
+      name: "Settings",
+      icon: <FaCog />,
+      path: `/settings/${userId}`,
+      ref: refs.settingsRef,
+    },
   ];
 
   return (
@@ -56,6 +70,7 @@ const DashboardSlider = ({ isOpen, toggleSlider, isMobile }) => {
               to={item.path}
               className="menu-link"
               onClick={isMobile ? toggleSlider : null}
+              ref={item.ref}
             >
               <span className="menu-icon">{item.icon}</span>
               <span className="menu-text">{item.name}</span>
@@ -66,6 +81,7 @@ const DashboardSlider = ({ isOpen, toggleSlider, isMobile }) => {
           className="menu-item logout-item"
           whileHover={{ x: 5 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          ref={refs.logoutRef}
         >
           <button
             className="menu-link logout-button btn w-100"

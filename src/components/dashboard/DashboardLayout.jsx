@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import DashboardNavbar from "./DashboardNavbar";
 import DashboardSlider from "./DashboardSlider";
 import "../../styles/Dashboard.css";
+import { BeginTourProvider } from "../../context/BeginTourProvider";
 
 function DashboardLayout({ children }) {
   const [isSliderOpen, setIsSliderOpen] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
     const checkScreenSize = () => {
       const mobile = window.innerWidth < 992;
@@ -27,26 +29,28 @@ function DashboardLayout({ children }) {
   };
 
   return (
-    <div className="dashboard-layout">
-      <DashboardNavbar
-        toggleSlider={toggleSlider}
-        isSliderOpen={isSliderOpen}
-      />
-      <div className="dashboard-container">
-        <DashboardSlider
-          isOpen={isSliderOpen}
+    <BeginTourProvider>
+      <div className="dashboard-layout">
+        <DashboardNavbar
           toggleSlider={toggleSlider}
-          isMobile={isMobile}
+          isSliderOpen={isSliderOpen}
         />
-        <main
-          className={`dashboard-main-content ${
-            isSliderOpen ? "" : "full-width"
-          }`}
-        >
-          {children}
-        </main>
+        <div className="dashboard-container">
+          <DashboardSlider
+            isOpen={isSliderOpen}
+            toggleSlider={toggleSlider}
+            isMobile={isMobile}
+          />
+          <main
+            className={`dashboard-main-content ${
+              isSliderOpen ? "" : "full-width"
+            }`}
+          >
+            {children}
+          </main>
+        </div>
       </div>
-    </div>
+    </BeginTourProvider>
   );
 }
 
