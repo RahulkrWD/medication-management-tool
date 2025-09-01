@@ -10,7 +10,7 @@ A responsive and user-friendly medication management web application built using
 
 ---
 
-## 🛠Tech Stack
+## Tech Stack
 
 - **React.js (Vite)** – Fast and modern frontend development
 - **Redux Toolkit** – Efficient and scalable state management
