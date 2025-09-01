@@ -1,4 +1,4 @@
-# 💊 Prescription and Medication Management Tool – Frontend
+# Prescription and Medication Management Tool – Frontend
 
 A responsive and user-friendly medication management web application built using React.js and Firebase.
 
@@ -10,7 +10,7 @@ A responsive and user-friendly medication management web application built using
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠Tech Stack
 
 - **React.js (Vite)** – Fast and modern frontend development
 - **Redux Toolkit** – Efficient and scalable state management
@@ -21,16 +21,16 @@ A responsive and user-friendly medication management web application built using
 
 ---
 
-## ✨ Features
+## Features
 
-### 📋 Medication Management
+### Medication Management
 
 - **Add Medications**: Enter name, dosage, frequency, and instructions.
 - **View Medications**: Displayed in a responsive card layout.
 - **Filter & Search**: Search by medication name or filter by status (Active, Expired, Completed, Missed).
 - **Update Status**: Easily change medication status from a dropdown.
 
-### 🎨 UI/UX
+### UI/UX
 
 - **Responsive Design**: Optimized for mobile, tablet, and desktop.
 - **Animated Transitions**: Using Framer Motion.
@@ -39,16 +39,16 @@ A responsive and user-friendly medication management web application built using
 
 ---
 
-## ⚙️ Key Highlights
+## Key Highlights
 
-- 🔄 Real-time data updates with **Firebase**
-- 🔧 Global state handling via **Redux Toolkit**
-- 📄 Built with **React + Vite** for optimized performance
-- 📚 Pagination support for better list handling
+- Real-time data updates with **Firebase**
+- Global state handling via **Redux Toolkit**
+- Built with **React + Vite** for optimized performance
+- Pagination support for better list handling
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 Follow the steps below to run the project locally:
 
@@ -66,7 +66,7 @@ npm install
 npm run dev
 ```
 
-# 📸 Screenshots ### Customer Interface
+# Screenshots ### Customer Interface
 
 ![home page](./screenshoot/home.png)
 ![Blog page](./screenshoot/blog.png)
