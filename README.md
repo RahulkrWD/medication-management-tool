@@ -4,7 +4,7 @@ A responsive and user-friendly medication management web application built using
 
 ---
 
-## 🔗 Live Demo
+##  Live Demo
 
 [Click here to view the app](https://medication-management-tool.vercel.app/)
 
